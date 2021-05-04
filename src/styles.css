@@ -1,0 +1,19 @@
+.header-conatiner {
+  display: flex;
+  justify-content: space-between;
+
+  text-transform: uppercase;
+}
+
+.content-container {
+  height: 300px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-container {
+  text-align: center;
+}

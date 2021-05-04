@@ -1,23 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+
+import { useContextApp } from "./context/AppContext";
+
+import "./styles.css";
 
 function App() {
+  const { name, handleSetName } = useContextApp();
+
+  const [nameInput, setNameInput] = useState("");
+
+  const submit = (event) => {
+    event.preventDefault();
+
+    handleSetName(nameInput);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header></Header>
+      <div className="content-container">
+        <form onSubmit={submit}>
+          <h1> {name} </h1>
+          <input
+            placeholder="digite seu nome"
+            onChange={(event) => setNameInput(event.target.value)}
+          />
+          <button type="submit"> trocar nome </button>
+        </form>
+      </div>
+      <Footer></Footer>
     </div>
   );
 }
